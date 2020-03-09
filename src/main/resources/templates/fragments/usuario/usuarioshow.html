@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Detalle de usuario</title>
+    <th:block th:include="../templates/header"></th:block> 
+</head>
+<body>
+<div class="row">
+     <div class="col-md-3">
+                        <th:block th:include="../templates/menu"></th:block>
+        </div>
+    <div class="col-md-9">
+         <div class="row text-center">
+                        <img src="../../static/image/images.jpeg" width="100" th:src="@{/image/images.jpeg}"/>
+                    </div>
+        <div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Codigo:</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" th:text="${usuario.codigousuario}">Usuario Id</p></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Usuario:</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" th:text="${usuario.nombreusuario}">Nombre</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Dui:</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" th:text="${usuario.dui}">Nombre</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Nombre y apellido:</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" th:text="${usuario.nombrecompleto}">Nombre</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Contraseña:</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" th:text="${usuario.contraseniausuario}">contraseña</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Roles asignados a usuario:</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" th:text="${roleslist}">roles</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Fecha de ingreso :</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" th:text="${#calendars.format(usuario.fechaingreso, 'dd/MM/yyyy')}">fecha ingreso</p>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Estado:</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" th:text="${usuario.estadousuario}?'ACTIVO':'INACTIVO'"></p>
+                    </div>
+    
+                </div>
+                <div th:if="${usuario.estadousuario==0}" class="form-group">
+                    <label class="col-sm-4 control-label">Fecha de baja:</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" th:text="${#calendars.format(usuario.fechabaja, 'dd/MM/yyyy')}">fecha de baja</p>
+                    </div>
+                </div>
+    
+            </form>
+                    <div class="col-md-12">
+            <div class="row" align="center">
+<a href="#" th:href="@{/usuarios/}" class="btn btn-primary glyphicon glyphicon-arrow-left">Regresar</a>                
+            </div>
+    </div>
+    </div>
+    </div>
+</div>
+</body>
+<script th:inline="javascript">
+    Textheader('pnt_cous',document.title);
+    $(document).ready(function () {
+    if([[${lol}]]===0){
+       swal("Exito!", "Registro agregado correctamente", "success");
+    }
+    
+    if([[${lol}]]===1){
+       swal("ERROR!", "Ocurrio un error en el proceso", "error");
+    }
+    });
+</script>
+</html>

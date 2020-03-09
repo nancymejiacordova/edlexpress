@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link th:href="@{/css/login.css}" rel="stylesheet" media="screen"/>
+        <title>PUEBLA-Login</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+        <!--<link href="../static/css/Style1.css" th:href="@{/css/Style1.css}" rel="stylesheet" media="screen"/>-->
+        <script type="text/javascript" th:src="@{/js/jquery.mask.min.js}"></script>
+<!--        <script type="text/javascript" th:src="@{/js/validacion_controladores.js}"></script>
+        <script type="text/javascript" th:src="@{/js/validacion_controladores2.js}"></script>
+        <script type="text/javascript"  th:src="@{/js/script.js}"></script>
+        <script type="text/javascript" th:src="@{/js/validacion_todores3.js}"></script>
+        <script type="text/javascript" th:src="@{/js/helpJs.js}"></script>
+        <link rel="shortcut icon" type="../../static/image/favicon.png"   th:href="@{/image/favicon.png}"/>-->
+    </head>
+    <body>
+        <div class="row">
+            <div class="col_cen">
+                <div class="text-center">
+                    <h2 class="h2mod">SISTEMA DE ENTREGAS <br>
+                        PUEBLA<br>
+                        BIENVENIDO</h2>
+                </div>
+            </div>
+            
+        </div>
+        <br>
+        <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+            <div class="row text-center" align="center">
+                <img src="../../static/image/login.jpg"  th:src="@{/image/login.png}" />
+            </div>
+            <h2 class="h2mod">Ingrese Usuario y Contraseña:</h2>
+            <div class="inset">
+
+                <div th:if="${#request.getParameter('error') == 'true'}"
+                     style="color:red;margin:10px 0px;">
+                    ACCESO NO PERMITIDO!!!<br />
+                    Razon :
+                    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+                          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                        Static summary
+                    </span>
+
+                </div>
+                <div class="form-group" align="center">
+                    <label for="username" class="col-sm-2 control-label">USUARIO</label>
+
+                    <div class="col-sm-9">
+                        <input type="text"  name="username" size="16" maxlength="16"id ="username">
+                    </div>
+                </div>
+                <div class="form-group" align="center">
+                    <label for="password">CONTRASEÑA</label>
+                    <div class="col-sm-9">
+                        <input type="password" name="password" id="password">
+                    </div>
+                </div>
+            </div>
+            <p class="p-container">
+                <input name="submit" type="submit" value="Iniciar Sesion" />
+            </p>
+        </form>
+        <div class="col-md-12">
+            <footer class="footerl">
+                <div class="container" align="center">
+                    <span class="fotmod"> Derechos Reservados PUEBLA.</span>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

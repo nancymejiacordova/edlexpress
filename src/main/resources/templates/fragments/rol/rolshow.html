@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Detalle de rol</title>
+     <th:block th:include="../templates/header"></th:block> 
+</head>
+<body>
+<div class="row">
+     <div class="col-md-3">
+                        <th:block th:include="../templates/menu"></th:block>
+                    </div>
+    <div class="col-md-9">
+        <div>
+            <form class="form-horizontal">
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Código del rol:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${rol.codigorol}">Rol Id</p></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Nombre del rol:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${rol.nombrerol}">Nombre</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Descripción del rol:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${rol.descripcionrol}">descripcion</p>
+                    </div>
+                </div>
+                
+            </form>
+                 <div class="col-md-12">
+            <div class="row" align="center">
+            <a href="#" th:href="@{/roles/}" class="btn btn-primary glyphicon glyphicon-arrow-left">Regresar</a>    
+            </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</body>
+
+<script th:inline="javascript">
+    $(document).ready(function () {
+        
+    Textheader('pnt_coro',document.title);
+    if([[${lol}]]===0){
+       swal("Exito!", "Registro agregado correctamente", "success");
+    }
+    
+    if([[${lol}]]===1){
+       swal("ERROR!", "Ocurrio un error en el proceso", "error");
+    }
+    });
+</script>
+</html>

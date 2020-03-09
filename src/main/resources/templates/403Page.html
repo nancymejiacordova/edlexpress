@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Acceso Denegado</title>
+    <th:block th:include="../templates/header"></th:block>
+</head>
+
+<body>
+<th:block th:include="/menu"></th:block>
+            <div class="row text-center">
+                <br><br><br><br><br><br><br><br>
+                        <img src="../../static/image/denegado.jpg" width="600" th:src="@{/image/denegado.jpg}"/>
+            <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+            </div>
+<div class="col-md-12">
+    <th:block th:include="footer"></th:block>
+</div>
+</body>
+
+</html>

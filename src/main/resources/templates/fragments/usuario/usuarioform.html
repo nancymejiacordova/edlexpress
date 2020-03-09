@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <title>Crear Usuario</title>
+    <th:block th:include="../templates/header"></th:block>
+</head>
+<body>
+    <div class="row" >
+        <div class="col-md-3">
+            <th:block th:include="../templates/menu"></th:block>
+        </div>
+        <div class="col-md-9">
+            <br><br>
+            <div class="row text-center">
+                <img src="../../static/image/agregarusuario.png" width="100" th:src="@{/image/agregarusuario.png}"/>
+            </div>
+            <br>
+            <div>
+                <form id ="usuarioform" autocomplete="off" class="form-horizontal" th:object="${usuario}" th:action="${msg==1?'../usuarios/usuario':'../usuario'}" method="post" >
+                    <!--h3>Introduzca los datos del Usuario</h3-->
+                    <input type="hidden" th:field="*{codigousuario}"/>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nombres:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control letras" required="true" size="100" maxlength="50" th:field="*{nombrecompleto}" />
+                        </div>
+                        <div class="popup col-sm-1"><b>
+                                <a id="" class="btnayuda btn btn-info" href="#" onmouseover="javascript:mostrarAyuda('nomUser')" onmouseout ="javascript:ocultarAyuda('nomUser')">a</a></b>
+                            <span class="popuptext" id="nomUser">Ingrese los Nombres del Usuario. Solo es permitido 50 caracteres. !!</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Apellidos:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control letras" required="true" size="100" maxlength="50" th:field="*{nombreusuario}" />
+                        </div>
+                        <div class="popup col-sm-1"><b>
+                                <a id="" class="btnayuda btn btn-info" href="#" onmouseover="javascript:mostrarAyuda('apeUser')" onmouseout ="javascript:ocultarAyuda('apeUser')">a</a></b>
+                            <span class="popuptext" id="apeUser">Ingrese los apellidos del Usuario. Solo es permitido 50 caracteres. !!</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">DUI:</label>
+                        <div class="col-sm-6">
+                            <input type="text" id="duius" name="duiuser" autocomplete="off" class="form-control numeros num_dui" required="true" size="100" maxlength="9" th:field="${usuario.dui}" />
+                        </div>
+                        <div class="popup col-sm-1"><b>
+                                <a id="" class="btnayuda btn btn-info" href="#" onmouseover="javascript:mostrarAyuda('dui')" onmouseout ="javascript:ocultarAyuda('dui')">a</a></b>
+                            <span class="popuptext" id="dui">Ingrese el DUI del Usuario. Solo es permitido 9 digitos.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Contraseña:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" required="true" autocomplete="off" id = "pass" size="100" maxlength="50" th:field="*{contraseniausuario}"/>
+                        </div>
+                        <div class="popup col-sm-1"><b>
+                                <a id="" class="btnayuda btn btn-info" href="#" onmouseover="javascript:mostrarAyuda('passw')" onmouseout ="javascript:ocultarAyuda('passw')">a</a></b>
+                            <span class="popuptext" id="passw">Ingrese la Contraseña. Como minimo debe ingresar 8 caracteres . !!</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Confirmacion de contraseña:</label>
+                        <div class="col-sm-6">
+                            <input type="text" id="confpass" class="form-control" autocomplete="off" required="true" size="11" maxlength="11" th:field="*{controlcontrasenia}"/>
+                        </div>
+                        <div class="popup col-sm-1"><b>
+                                <a id="" class="btnayuda btn btn-info" href="#" onmouseover="javascript:mostrarAyuda('passwconf')" onmouseout ="javascript:ocultarAyuda('passwconf')">a</a></b>
+                            <span class="popuptext" id="passwconf">Confirme la Contraseña. Como minimo debe ingresar 8 caracteres . !!</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Fecha ingreso:</label>
+                        <div class="col-sm-2">
+                            <input type="text" placeholder="dia/mes/año" class="form-control fecha_format" id="fingreso" th:field="*{fechaingreso}" onchange="isDate(this.value)"/>
+                        </div>
+                        <div class="popup col-sm-1"><b>
+                                <a id="" class="btnayuda btn btn-info" href="#" onmouseover="javascript:mostrarAyuda('finicio')" onmouseout ="javascript:ocultarAyuda('finicio')">a</a></b>
+
+                            <span class="popuptext" id="finicio">Registre la fecha de ingreso del usuario</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row" align="center">
+                            <a href="#" th:href="@{/usuarios/}" class="btn btn-primary glyphicon glyphicon-arrow-left">Regresar</a>
+                            <button type="button" id = "guardar" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span>Guardar</button>
+                            <button type="reset" class="btn btn-secondary"><span class="glyphicon glyphicon-erase"></span>Limpiar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+       <div class="col-md-12">
+            <th:block th:include="../templates/footer"></th:block>
+        </div>
+</body>
+
+<script>
+           
+					 function Fechas(val1,val2,val3,val4){
+                        var foo=ValidarFecha(val1,val2,val3,val4).split(",");;
+                        if(foo[0]!=foo[2]){
+                            swal(foo[1], foo[0]);
+                        }
+                    }
+                    
+                    function isDate(val){
+                        var foo=FechaActualMayor(val);
+                        if(foo!=null){
+                            swal("ERROR!", "La fecha de ingreso no puede ser mayor que hoy");
+                           // $("#fingreso").val("");
+                        }
+                    }
+
+		
+	</script>
+<script th:inline="javascript">
+    Textheader('pnt_geus', document.title);
+    
+    $(document).ready(function () {
+        var ad = $("#fingreso").prop("defaultValue");
+        if (ad!==""){
+        $('#fingreso').val($.datepicker.formatDate('dd/mm/yy', new Date(ad)));
+        }
+        $('#pass').attr('type', 'password');
+        $('#confpass').attr('type', 'password');
+        $('#fingreso').datepicker({
+                    dateFormat: 'dd/mm/yy'
+        });
+        $('#guardar').click(function(){ 
+        var pass = $("#pass").val();
+        if (pass == $("#confpass").val()){
+            if (pass.length >= 8){
+                $("#loader").addClass("loader");
+                $("#fingreso").val(nufecha($("#fingreso").val()));
+                $("form#usuarioform").submit();
+            }
+            else{
+            swal({
+                title: "ERROR!",
+                text: "la contraseña debe tener al menos 8 caracteres",
+                icon: "error"
+            });
+            }
+        }
+        else {
+            swal({
+            title: "ERROR!",
+            text: "las contraseñas no coinciden",
+            icon: "error"
+            });
+        }
+    });
+    if ([[${msg}]] === 0){
+    $("#loader").addClass("loader");   
+    swal({
+    title: "Usuario Generado con exito ",
+            text: [[${usuarioname}]],
+            icon: "success"
+    }).then(function() { 
+    location.href = '../usuarios/';
+    });
+    }
+    if ([[${msg}]] === 10){
+    $("#loader").addClass("loader");   
+    swal({
+    title: "Usuario Modificado con exito ",
+            text: [[${usuarioname}]],
+            icon: "success"
+    }).then(function() {
+    location.href = '../usuarios/';
+    });
+    }
+
+    if ([[${msg}]] === 1){
+    swal({
+    title: "ERROR!",
+            text: "El numero de DUI ya existe",
+            icon: "error"
+    });
+    }
+    });
+    function nufecha(val){
+        arreglo = val.split("/")
+        val = arreglo[1]+"/"+arreglo[0]+"/"+arreglo[2]
+        return val;
+    }
+    function isDat(val, id){
+    var foo = ExisteFecha(val, id).split(","); ;
+    if (foo[0] != foo[2]){
+    swal(foo[1], foo[0]);
+    }
+    }
+</script> 
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Crear Rol</title>
+  <th:block th:include="../templates/header"></th:block>
+  </head>
+<body><script> Textheader('pnt_crol',document.title);</script>
+<!--      <div class="contenedorizq"><label  >pnt_crol</label>
+    <label  class="der">
+    <script >
+var f = new Date();
+document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+</script></label>
+</div><br>-->
+<div class="row">
+    <div class="col-md-3">
+                        <th:block th:include="../templates/menu"></th:block>
+                    </div>
+    <div class="col-md-9">
+    <div class="row text-center">
+        <br><br>
+                        <img src="../../static/image/roles.png" width="100" th:src="@{/image/roles.png}"/>
+                    </div>
+    <div>
+        <form class="form-horizontal" th:object="${rol}" th:action="@{../rol}" method="post">
+        <input type="hidden" th:field="*{codigorol}"/>
+  
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nombre de Rol(*):</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" required="true" size="50" maxlength="50" th:field="*{nombrerol}"/>
+                </div>
+                 <div class="popup col-sm-1"><b>
+                                    <a id="" class="btnayuda btn btn-info" href="#" onmouseover="javascript:mostrarAyuda('rol')" onmouseout ="javascript:ocultarAyuda('rol')">a</a></b>
+
+                                <span class="popuptext" id="rol">Ingrese el Nombre del Rol. Solo se permiten maximon  50 caracteres. !!</span>
+                            </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Descripción de Rol(*):</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" required="true" size="100" maxlength="100" th:field="*{descripcionrol}"/>
+                </div>
+                 <div class="popup col-sm-1"><b>
+                                    <a id="" class="btnayuda btn btn-info" href="#" onmouseover="javascript:mostrarAyuda('descripcionn')" onmouseout ="javascript:ocultarAyuda('descripcionn')">a</a></b>
+
+                                <span class="popuptext" id="descripcionn">Ingrese una descripcion al Rol. Solo se permiten maximon  100 caracteres. !!</span>
+                            </div>
+            </div>
+<!--            <div class="form-group">
+                <label class="col-sm-2 control-label">EJEMPLO DE DUI:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="num_dui" />
+                </div>
+            </div>-->
+ </div>
+            <div class="row" align="center">
+                                 <a href="#" th:href="@{/roles/}" class="btn btn-primary glyphicon glyphicon-arrow-left">Regresar</a>  
+                            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span>Guardar</button>
+                            <button type="reset" class="btn btn-secondary"><span class="glyphicon glyphicon-erase"></span>Limpiar</button>
+            </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+    </div>
+   <div class="col-md-12">
+            <th:block th:include="../templates/footer"></th:block>
+        </div>
+</body>
+<script th:inline="javascript">
+    $(document).ready(function () {
+    if([[${msg}]]===0){
+       swal({
+                title: "Exito!",
+                text: "Registro agregado correctamente",
+                type: "success",
+                icon: "success"
+       }).then(function() {
+                location.href = '../roles/';
+       }); 
+}
+    
+    if([[${msg}]]===1){
+        swal({
+                title: "ERROR!",
+                text: "Ocurrio un error en el proceso",
+                type: "error",
+                icon: "error"
+       });
+    }
+    });
+</script>    
+</html>

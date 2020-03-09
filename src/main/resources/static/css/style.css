@@ -1,0 +1,313 @@
+.fondoloco{
+  background:#28497d; 
+  background-image: url(/sisadmrh/image/background.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/sisadmrh/image/loading.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .94;
+}
+.hedfondo{
+  background:#82a77d;; 
+  /*background-image: url(/sisadmrh/image/background.jpg);*/
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.nav-side-menu {
+  overflow: auto;
+  font-family: verdana;
+  font-size: 12px;
+  font-weight: 200;
+  background-color: #186218;
+  position: fixed;
+  top: 500px;
+  width: 300px;
+  height: 60%;
+  color: #186218;
+}
+.nav-side-menu .brand {
+  background-color: #186218;
+  line-height: 50px;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+.nav-side-menu .toggle-btn {
+  display: none;
+}
+.nav-side-menu ul,
+.nav-side-menu li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  line-height: 35px;
+  cursor: pointer;
+  /*    
+    .collapsed{
+       .arrow:before{
+                 font-family: FontAwesome;
+                 content: "\f053";
+                 display: inline-block;
+                 padding-left:10px;
+                 padding-right: 10px;
+                 vertical-align: middle;
+                 float:right;
+            }
+     }
+*/
+}
+.nav-side-menu ul :not(collapsed) .arrow:before,
+.nav-side-menu li :not(collapsed) .arrow:before {
+  font-family: FontAwesome;
+  content: "\f078";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+  float: right;
+}
+.nav-side-menu ul .active,
+.nav-side-menu li .active {
+  border-left: 3px solid #d19b3d;
+  background-color: #186218;
+}
+.nav-side-menu ul .sub-menu li.active,
+.nav-side-menu li .sub-menu li.active {
+  color: #186218;
+}
+.nav-side-menu ul .sub-menu li.active a,
+.nav-side-menu li .sub-menu li.active a {
+  color: #186218;
+}
+.nav-side-menu ul .sub-menu li,
+.nav-side-menu li .sub-menu li {
+  background-color: #186218;
+  border: none;
+  line-height: 28px;
+  border-bottom: 1px solid #23282e;
+  margin-left: 0px;
+}
+.nav-side-menu ul .sub-menu li:hover,
+.nav-side-menu li .sub-menu li:hover {
+  background-color: #186218;
+}
+.nav-side-menu ul .sub-menu li:before,
+.nav-side-menu li .sub-menu li:before {
+  font-family: FontAwesome;
+  content: "\f105";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+.nav-side-menu li {
+  padding-left: 0px;
+  border-left: 3px solid #2e353d;
+  border-bottom: 1px solid #23282e;
+}
+.nav-side-menu li a {
+  text-decoration: none;
+  color: #e1ffff;
+}
+.nav-side-menu li a i {
+  padding-left: 10px;
+  width: 20px;
+  padding-right: 20px;
+}
+.nav-side-menu li:hover {
+  border-left: 3px solid #d19b3d;
+  background-color: #186218;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+@media (max-width: 767px) {
+  .nav-side-menu {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .nav-side-menu .toggle-btn {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10 !important;
+    padding: 3px;
+    background-color: #186218;
+    color: #000;
+    width: 40px;
+    text-align: center;
+  }
+  .brand {
+    text-align: left !important;
+    font-size: 22px;
+    padding-left: 20px;
+    line-height: 50px !important;
+  }
+}
+@media (min-width: 767px) {
+  .nav-side-menu .menu-list .menu-content {
+    display: block;
+  }
+}
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  /*position: absolute;*/
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  line-height: 30px; /* Vertically center the text there */
+  background-color: #28497d;
+}
+.footerl {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  line-height: 30px; /* Vertically center the text there */
+  background-color: #28497d;
+}
+
+.boton{
+  width:30px;
+  height:30px;
+  background-color:#03800b;
+  margin: 5px;
+  padding:10px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  font-size:11px;
+  line-height:32px;
+  text-transform: uppercase;
+  float:left;
+}
+.boton:hover{
+  opacity: 0.50;
+  -moz-opacity: .50;
+  filter:alpha (opacity=50);
+}
+.boton a{
+  color:#fff;
+  text-decoration:none;
+  padding:5px 5px 5px 0;
+}
+.celdauser{
+    font-size:18px;
+    text-shadow:2px 2px 5px white;
+    color: green;
+    float: left;
+    margin-left: 48px;
+}
+.celdauser1{
+    font-size:18px;
+    text-shadow:2px 2px 5px white;
+    color: black;
+    float: left;
+    margin-left: -24px;
+}
+.celdauser1 a{
+    color: black;
+    float: left;
+    margin-left: -24px;
+}
+
+.celdauser1 a:hover { 
+   color: blue;
+    float: left;
+    margin-left: -24px;
+}
+.celdauser a{
+    color: black;
+    float: left;
+    margin-left: 50px;
+}
+
+.celdauser a:hover { 
+   color: blue;
+    float: left;
+    margin-left: 50px;
+}
+
+
+.contenedorizq{
+  width: 100%;
+  float: left;
+  background-color: #ffffff;
+}
+
+.conteinertitulopantalla{
+  width: 100%;
+  float: center;
+  /*background-color: #ffffff;*/
+  font-size:30px;
+}
+
+
+.der{
+    color: white;
+  float: right;
+  margin: 0% 1%;
+  /*font-size:18px;*/
+  
+}
+.hmod {
+  font-size:25px;
+  text-shadow:2px 2px 5px black;
+  text-align:center;
+  position:relative;
+}
+.hmod1 {
+  font-size:25px;
+  text-shadow:2px 2px 5px black;
+  text-align:center;
+  position:relative;
+}
+.imauser {
+    position: absolute;
+    height: 49px;
+    margin-left: 100px;
+}
+
+img1 {
+       width: 48px;
+   height: 48px;
+
+   display: block;
+   width: 100%;
+}
