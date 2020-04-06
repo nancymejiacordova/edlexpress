@@ -1,72 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <link th:href="@{/css/login.css}" rel="stylesheet" media="screen"/>
-        <title>PUEBLA-Login</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
-        <!--<link href="../static/css/Style1.css" th:href="@{/css/Style1.css}" rel="stylesheet" media="screen"/>-->
-        <script type="text/javascript" th:src="@{/js/jquery.mask.min.js}"></script>
-<!--        <script type="text/javascript" th:src="@{/js/validacion_controladores.js}"></script>
-        <script type="text/javascript" th:src="@{/js/validacion_controladores2.js}"></script>
-        <script type="text/javascript"  th:src="@{/js/script.js}"></script>
-        <script type="text/javascript" th:src="@{/js/validacion_todores3.js}"></script>
-        <script type="text/javascript" th:src="@{/js/helpJs.js}"></script>
-        <link rel="shortcut icon" type="../../static/image/favicon.png"   th:href="@{/image/favicon.png}"/>-->
-    </head>
+    <th:block th:include="../templates/header"></th:block>
     <body>
-        <div class="row">
-            <div class="col_cen">
-                <div class="text-center">
-                    <h2 class="h2mod">SISTEMA DE ENTREGAS <br>
-                        PUEBLA<br>
-                        BIENVENIDO</h2>
-                </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:300,200' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+        <link rel="stylesheet" th:href="@{/css/login.css}">
+        <script type="text/javascript" th:src="@{/js/jquery.mask.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/login.js}"></script>
+        
+        <div id="findpass">Bienvenido al sistema de entregas</div>
+        <form class="form" name='f' th:action="@{/j_spring_security_check}" method='POST'>
+            <div class="forceColor"></div>
+            <div class="topbar">
+                <div class="spanColor"></div>
+                <input type="input" class="input" id="username" name="username" placeholder="USUARIO"/>
+                <input type="password" class="input" id="password" name="password" placeholder="PASSWORD"/>
             </div>
-            
-        </div>
-        <br>
-        <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
-            <div class="row text-center" align="center">
-                <img src="../../static/image/login.jpg"  th:src="@{/image/login.png}" />
+            <button class="submit" id="submit" >Iniciar Session</button>
+            <div th:if="${#request.getParameter('error') == 'true'}"
+                 style="color:red;margin:10px 0px;" class="topbar">
+                <div class="spanColor"></div>
+                <span class="previo" id="boxm" placeholder="Acceso no permitido">acceso no permitido, debido a:</span>
+                <span class="errores" th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+                      th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                    Static summary
+                </span>
             </div>
-            <h2 class="h2mod">Ingrese Usuario y Contraseña:</h2>
-            <div class="inset">
-
-                <div th:if="${#request.getParameter('error') == 'true'}"
-                     style="color:red;margin:10px 0px;">
-                    ACCESO NO PERMITIDO!!!<br />
-                    Razon :
-                    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
-                          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
-                        Static summary
-                    </span>
-
-                </div>
-                <div class="form-group" align="center">
-                    <label for="username" class="col-sm-2 control-label">USUARIO</label>
-
-                    <div class="col-sm-9">
-                        <input type="text"  name="username" size="16" maxlength="16"id ="username">
-                    </div>
-                </div>
-                <div class="form-group" align="center">
-                    <label for="password">CONTRASEÑA</label>
-                    <div class="col-sm-9">
-                        <input type="password" name="password" id="password">
-                    </div>
-                </div>
-            </div>
-            <p class="p-container">
-                <input name="submit" type="submit" value="Iniciar Sesion" />
-            </p>
         </form>
-        <div class="col-md-12">
-            <footer class="footerl">
-                <div class="container" align="center">
-                    <span class="fotmod"> Derechos Reservados PUEBLA.</span>
-                </div>
-            </footer>
-        </div>
     </body>
 </html>

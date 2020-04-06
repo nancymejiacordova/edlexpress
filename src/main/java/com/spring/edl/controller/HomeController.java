@@ -43,7 +43,7 @@ public class HomeController extends UtilsController{
     public String welcomePage(Model model) {
         model.addAttribute("title", "Welcome");
         model.addAttribute("message", "Bienvenido");
-        return "loginPage";
+        return "index";
     }
   @RequestMapping(value = "usuarioconfirm")
     public String usuarioconfirm(Usuario usuario1,Model model, SessionStatus status) {
@@ -75,7 +75,7 @@ public class HomeController extends UtilsController{
         Usuario loginedUser = usr.findbyusername(principal.getName());
         model.addAttribute("usuario", loginedUser);
         model.addAttribute("messageuser", "Usuario :" + principal.getName());
-        return ("1".equals(loginedUser.getControlcontrasenia()))?"passform":"index";
+        return ("1".equals(loginedUser.getControlcontrasenia()))?"passform":"indexorigen";
     }
  
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
