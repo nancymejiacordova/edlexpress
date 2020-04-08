@@ -2,8 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head lang="en">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-        <link href="../static/css/menu.css" th:href="@{/css/menu.css}" rel="stylesheet" media="screen"/>
+        <link  th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+        <link th:href="@{/css/menu.css}" rel="stylesheet" media="screen"/>
     </head>
     <body>
         <div th:fragment="menu">
@@ -21,17 +22,27 @@
                     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li class="active"><a  href="#" th:href="@{/}">Inicio<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-                            <li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
+                            <!--<li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">-->
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Usuarios <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-                                <ul class="dropdown-menu forAnimate" role="menu">
-                                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/usuarios/}">Gestionar Usuarios</a></li>
-                                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/usuarios/new/usuario}">Crear Usuario</a></li>
-                                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/roles/}">Gestionar Roles</a></li>
-                                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/roles/new/rol}">Crear Rol</a></li>
-                                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/usuariosroles/}">Consultar Roles Asignados</a></li>
-                                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/usuariosroles/new/usuariorol}">Asignar Roles</a></li>
+                                <!--<ul class="dropdown-menu forAnimate" role="menu">-->
+                                <ul class=" forAnimate" role="menu">
+                                    <li><a href="#" th:href="@{/usuarios/}">Gestionar Usuarios</a></li>
+                                    <li><a href="#" th:href="@{/usuarios/new/usuario}">Crear Usuario</a></li>
+                                    <li><a href="#" th:href="@{/roles/}">Gestionar Roles</a></li>
+                                    <li><a href="#" th:href="@{/roles/new/rol}">Crear Rol</a></li>
+                                    <li><a href="#" th:href="@{/usuariosroles/}">Consultar Roles Asignados</a></li>
+                                    <li><a href="#" th:href="@{/usuariosroles/new/usuariorol}">Asignar Roles</a></li>
+                                    <!--                                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/usuarios/}">Gestionar Usuarios</a></li>
+                                                                        <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/usuarios/new/usuario}">Crear Usuario</a></li>
+                                                                        <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/roles/}">Gestionar Roles</a></li>
+                                                                        <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/roles/new/rol}">Crear Rol</a></li>
+                                                                        <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/usuariosroles/}">Consultar Roles Asignados</a></li>
+                                                                        <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/usuariosroles/new/usuariorol}">Asignar Roles</a></li>-->
                                 </ul>
                             </li> 
+
+                            <li class="active"><a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Cerrar Sesión<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></span></a></li>
                         </ul>
                     </div>
                 </div>
